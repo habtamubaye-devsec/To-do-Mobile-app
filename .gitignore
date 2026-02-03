@@ -38,6 +38,9 @@ yarn-error.*
 
 app-example
 
+# Ignore generated files in convex
+convex/_generated/
+
 # generated native folders
 /ios
 /android
