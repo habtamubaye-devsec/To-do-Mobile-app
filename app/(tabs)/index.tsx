@@ -1,55 +1,30 @@
-import { useTheme } from "@/hooks/useTheme";
-import { Link } from "expo-router";
+import { api } from "@/convex/_generated/api";
+import { useMutation, useQuery } from "convex/react";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { ColorScheme, useTheme } from "@/hooks/useTheme";
+import { createHomeStyles } from "@/assets/images/styles/home.styles";
+import { SafeAreaView } from "react-native-safe-area-context";
+
 
 export default function Index() {
   const { toggleDarkMode } = useTheme();
+  const colors = useTheme();
+  const homeStyles = createHomeStyles(colors.colors);
+
   return (
-    <View
-      style={style.container}
-    >
-      <View style={style.box}>
+    <SafeAreaView style={homeStyles.safeArea}>
+    <View style={homeStyles.container}>
+        <View >
         <Text>Welcome to the App!</Text>
       </View>
-      <View style={style.instructionBox}>
+      <View >
         <Text>Get started by editing app/index.tsx</Text>
       </View>
       <TouchableOpacity onPress={toggleDarkMode}>
-        <Text style={style.link}>Tap here to toggle Dark Mode</Text>
+        <Text >Tap here to toggle Dark Mode</Text>
       </TouchableOpacity>
     </View>
+  </SafeAreaView>
   );
 }
 
-
-const style = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  box: {
-    padding: 20,
-    backgroundColor: "#f0f0f0",
-    borderRadius: 10,
-    shadowColor: "#000",
-    shadowOpacity: 0.1,
-    shadowRadius: 10,
-    elevation: 5,
-  },
-  instructionBox: {
-    marginTop: 20,
-    borderRadius: 10,
-    shadowColor: "#000",
-    shadowOpacity: 0.1,
-    shadowRadius: 10,
-    elevation: 5,
-    padding: 20,
-    backgroundColor: "#ffffff",
-  },
-  link: {
-    marginTop: 30,
-    color: "#1e90ff",
-    fontSize: 16,
-  },
-});
