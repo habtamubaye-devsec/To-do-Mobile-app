@@ -8,7 +8,6 @@ const SettingsScreen = () => {
   return (
     <View>
       <Text>SettingsScreen</Text>
-
       <TouchableOpacity onPress={toggleDarkMode}>
         <Text style={style.link}>Tap here to toggle Dark Mode</Text>
       </TouchableOpacity>
@@ -28,17 +27,13 @@ const style = StyleSheet.create({
     padding: 20,
     backgroundColor: "#f0f0f0",
     borderRadius: 10,
-    shadowColor: "#000",
-    shadowOpacity: 0.1,
-    shadowRadius: 10,
+    boxShadow: "0px 4px 10px rgba(0,0,0,0.1)",
     elevation: 5,
   },
   instructionBox: {
     marginTop: 20,
     borderRadius: 10,
-    shadowColor: "#000",
-    shadowOpacity: 0.1,
-    shadowRadius: 10,
+    boxShadow: "0px 4px 10px rgba(0,0,0,0.1)",
     elevation: 5,
     padding: 20,
     backgroundColor: "#ffffff",
