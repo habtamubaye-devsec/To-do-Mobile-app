@@ -1,46 +1,53 @@
-import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
-import React from "react";
+import {
+  View,
+  Text,
+  ScrollView,
+} from "react-native";
 import { useTheme } from "@/hooks/useTheme";
+import { createSettingsStyles } from "@/assets/styles/settings.styles";
+import { LinearGradient } from "expo-linear-gradient";
+import { SafeAreaView } from "react-native-safe-area-context";
+import { Ionicons } from "@expo/vector-icons";
+import ProgressStatus from "@/components/ProgressStatus";
+import Preferences from "@/components/Preferences";
+import React from "react";
+import DangerZone from "@/components/DangerZone";
+
 
 const SettingsScreen = () => {
-  const { toggleDarkMode } = useTheme();
+
+  const { colors } = useTheme();
+  const settingsStyles = createSettingsStyles(colors);
 
   return (
-    <View>
-      <Text>SettingsScreen</Text>
-      <TouchableOpacity onPress={toggleDarkMode}>
-        <Text style={style.link}>Tap here to toggle Dark Mode</Text>
-      </TouchableOpacity>
-    </View>
+    <LinearGradient
+      colors={colors.gradients.background}
+      style={settingsStyles.container}
+    >
+      <SafeAreaView style={settingsStyles.safeArea}>
+        <View style={settingsStyles.header}>
+          <View style={settingsStyles.titleContainer}>
+            <LinearGradient
+              colors={colors.gradients.primary}
+              style={settingsStyles.iconContainer}
+            >
+              <Ionicons name="settings" size={24} color="#ffffff" />
+            </LinearGradient>
+            <Text style={settingsStyles.title}>Settings</Text>
+          </View>
+        </View>
+        <ScrollView
+          style={settingsStyles.scrollView}
+          contentContainerStyle={settingsStyles.content}
+          showsVerticalScrollIndicator={false}
+        >
+          <ProgressStatus />
+          <Preferences />
+          <DangerZone />
+        </ScrollView>
+      </SafeAreaView>
+    </LinearGradient>
   );
 };
 
 export default SettingsScreen;
-
-const style = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  box: {
-    padding: 20,
-    backgroundColor: "#f0f0f0",
-    borderRadius: 10,
-    boxShadow: "0px 4px 10px rgba(0,0,0,0.1)",
-    elevation: 5,
-  },
-  instructionBox: {
-    marginTop: 20,
-    borderRadius: 10,
-    boxShadow: "0px 4px 10px rgba(0,0,0,0.1)",
-    elevation: 5,
-    padding: 20,
-    backgroundColor: "#ffffff",
-  },
-  link: {
-    marginTop: 30,
-    color: "#1e90ff",
-    fontSize: 16,
-  },
-});
