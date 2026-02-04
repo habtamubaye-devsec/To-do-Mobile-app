@@ -102,7 +102,7 @@ export default function Index() {
                   style={homeStyles.actionButton}
                 >
                   <Ionicons name="trash-outline" size={16} color="#ffffff" />
-                </LinearGradient>
+                 </LinearGradient>
               </TouchableOpacity>
             </View>
           </View>
