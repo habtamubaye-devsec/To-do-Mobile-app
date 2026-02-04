@@ -40,6 +40,9 @@ export const createHomeStyles = (colors: ColorScheme) => {
     },
     titleTextContainer: {
       flex: 1,
+      flexDirection: "column",
+      display: "flex",
+      // backgroundColor: '#ffeb3b', // for debugging, set in component for now
     },
     title: {
       fontSize: 32,
